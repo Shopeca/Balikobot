@@ -830,7 +830,7 @@ class Balikobot
 		$response[0]["eid"]=$this->data['data']['eid'];
 		$this->clean();
 
-		if (!isset($response[0]['package_id'])) {
+		if (!isset($response[0]['package_id']) && ($test === false || !isset($response[0]['status']) || $response[0]['status'] != '200')) {
 			$errorMsg = "";
 			if (isset($response[0]['errors'])) {
 				foreach ($response[0]['errors'] as $error) {
