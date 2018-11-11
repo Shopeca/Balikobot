@@ -2,6 +2,8 @@
 
 namespace Shopeca\Balikobot;
 
+use Shopeca\Balikobot\Exceptions\CustomerInvalidArgumentException;
+
 /**
  * @author Miroslav Merinsky <miroslav@merinsky.biz>
  * @version 1.0
@@ -709,25 +711,44 @@ class Balikobot
 		$company = null,
 		$country = self::COUNTRY_CZECHIA
 	) {
-		if (empty($name) || empty($street) || empty($city) || empty($zip) || empty($phone) || empty($email)) {
-			throw new \InvalidArgumentException('Invalid argument has been entered.');
+		$failedArguments = [];
+		if (empty($name)) {
+			$failedArguments[] = 'name';
+		}
+		if (empty($street)) {
+			$failedArguments[] = 'street';
+		}
+		if (empty($city)) {
+			$failedArguments[] = 'city';
+		}
+		if (empty($zip)) {
+			$failedArguments[] = 'zip';
+		}
+		if (empty($phone)) {
+			$failedArguments[] = 'phone';
+		}
+		if (empty($email)) {
+			$failedArguments[] = 'email';
+		}
+		if (count($failedArguments) > 0) {
+			throw new CustomerInvalidArgumentException('Invalid argument has been entered.', 1, $failedArguments);
 		}
 		if (!in_array($country, $this->getCountryCodes())) {
-			throw new \InvalidArgumentException('Invalid country code has been entered.');
+			throw new CustomerInvalidArgumentException('Invalid country code has been entered.', 2, $country);
 		}
 
 		switch ($country) {
 			case self::COUNTRY_CZECHIA:
 				if (!preg_match('/^\d{5}$/', $zip)) {
-					throw new \InvalidArgumentException('Invalid zip code has been entered. Match XXXXX pattern.');
+					throw new CustomerInvalidArgumentException('Invalid zip code has been entered. Match XXXXX pattern.', 3, $zip);
 				}
 				break;
 			default:
-    trigger_error("Validation method is not implemented for country {$country}.", E_USER_WARNING);
+				trigger_error("Validation method is not implemented for country {$country}.", E_USER_WARNING);
 		}
 
 		if (!preg_match('/^(\+|00)42[01]\d{9}$/', $phone)) {
-			throw new \InvalidArgumentException('Invalid phone has been entered. Match +420YYYYYYYYY pattern.');
+			throw new CustomerInvalidArgumentException('Invalid phone has been entered. Match +420YYYYYYYYY pattern.', 4, $phone);
 		}
 
 		$this->data['data']['rec_name'] = $name;
