@@ -3,7 +3,7 @@
 include_once '../src/Balikobot/Balikobot.php';
 include_once 'config.php';
 
-use ThreeSixtyEu\Balikobot\Balikobot;
+use Shopeca\Balikobot\Balikobot;
 
 // tests
 $testGetters = false;

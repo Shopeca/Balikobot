@@ -1,7 +1,7 @@
 {
-	"name": "kyborek/Balikobot",
+	"name": "shopeca/Balikobot",
 	"description": "Balikobot API převedená na PHP 5.6 s přidanými funkcionalitami",
-	"homepage": "https://github.com/kyborek/Balikobot",
+	"homepage": "https://github.com/Shopeca/Balikobot",
 	"version": "1.0.2.1",
 	"license": "GPL-3.0",
 	"keywords": ["Balikobot", "Delivery service", "Shipper", "API"],
@@ -17,7 +17,9 @@
 		"ext-json": "*"
 	},
 	"autoload": {
-		"classmap": ["src/Balikobot"]
+		"psr-4": {
+			"Shopeca\\Balikobot\\": "src/Balikobot/"
+		}
 	},
 	"minimum-stability": "dev"
 }

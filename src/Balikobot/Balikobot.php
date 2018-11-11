@@ -1,6 +1,6 @@
 <?php
 
-namespace ThreeSixtyEu\Balikobot;
+namespace Shopeca\Balikobot;
 
 /**
  * @author Miroslav Merinsky <miroslav@merinsky.biz>
