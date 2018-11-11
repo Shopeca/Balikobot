@@ -433,7 +433,7 @@ class Balikobot
 	 * each branch contains following params
 	 * string $apiUser
 	 * string $apiKey
-	 * int $shopId Own identification of the shop; will be used to identify packages if you use one account for several shops
+	 * int $apiShopId Own identification of the shop; will be used to identify packages if you use one account for several shops
 	 */
 	protected $apiBranches;
 
@@ -458,16 +458,16 @@ class Balikobot
 	 * each branch contains following params
 	 * string $apiUser
 	 * string $apiKey
-	 * int $shopId Own identification of the shop; will be used to identify packages if you use one account for several shops
+	 * int $apiShopId Own identification of the shop; will be used to identify packages if you use one account for several shops
 	 */
 	public function __construct($apiBranches)
 	{
 		foreach ($apiBranches as $id => $branch) {
-			if (empty($branch['apiUser']) || empty($branch['apiKey']) || empty($branch['shopId'])) {
+			if (empty($branch['apiUser']) || empty($branch['apiKey']) || empty($branch['apiShopId'])) {
 				throw new \InvalidArgumentException('Invalid argument has been entered for branch ' . $id);
 			}
-			if (!is_int($branch['shopId'])) {
-				throw new \InvalidArgumentException('Invalid shopId has been entered. Enter number for branch ' . $id);
+			if (!is_int($branch['apiShopId'])) {
+				throw new \InvalidArgumentException('Invalid apiShopId has been entered. Enter number for branch ' . $id);
 			}
 		}
 
