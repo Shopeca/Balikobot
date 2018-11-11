@@ -12,6 +12,7 @@ class Balikobot
 	// <editor-fold desc="Requests" defaultstate="collapsed">
 	const
 		REQUEST_ADD = 'add', /*< add a package */
+		REQUEST_CHECK = 'check', /*< check a package */
 		REQUEST_DROP = 'drop', /*< drop a package */
 		REQUEST_TRACK = 'track', /*< track a package */
 		REQUEST_TRACKSTATUS = 'trackstatus', /*< track a package, get the last brief info */
@@ -785,8 +786,9 @@ class Balikobot
 	 *     'eid' => Generated EID of the package
 	 * )
 	 * @param string $eid MAX 40 alphanumeric characters. Will be generated if not supplied
+	 * @param bool $test
 	 */
-	public function add($eid = null)
+	public function add($eid = null, $test = false)
 	{
 		if (!$this->data['isService'] || !$this->data['isCustomer']) {
 			throw new \UnexpectedValueException('Call service and customer method before.');
@@ -796,16 +798,15 @@ class Balikobot
 			'%\'010s',
 			$this->data['data'][self::OPTION_ORDER]
 		) : '0000000000';
-  if (isset($eid)) {
-      $this->data['data']['eid'] = $eid;
-  }
-  else {
-      $this->data['data']['eid'] = $this->getEid(null, $orderId);
-  }
+		if (isset($eid)) {
+			$this->data['data']['eid'] = $eid;
+		} else {
+			$this->data['data']['eid'] = $this->getEid(null, $orderId);
+		}
 		$this->data['data']['return_full_errors'] = true;
 		// add only one package
-		$response = $this->call(self::REQUEST_ADD, $this->data['shipper'], [$this->data['data']]);
-  $response[0]["eid"]=$this->data['data']['eid'];
+		$response = $this->call($test ? self::REQUEST_CHECK : self::REQUEST_ADD, $this->data['shipper'], [$this->data['data']]);
+		$response[0]["eid"]=$this->data['data']['eid'];
 		$this->clean();
 
 		if (!isset($response[0]['package_id'])) {
