@@ -536,11 +536,12 @@ class Balikobot
 	 */
 	public function service($shipper, $service, array $options = [])
 	{
-		if (sizeof($this->getServices($shipper)) > 0) {
+		$availableServices = $this->getServices($shipper);
+		if (count($availableServices) > 0) {
 			if (empty($shipper) || empty($service)) {
 				throw new \InvalidArgumentException('Invalid argument has been entered.');
 			}
-			if (!isset($this->getServices($shipper)[$service])) {
+			if (!isset($availableServices[$service])) {
 				throw new \InvalidArgumentException("Invalid $service service for $shipper shipper.");
 			}
 		}
