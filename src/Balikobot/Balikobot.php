@@ -1287,6 +1287,7 @@ class Balikobot
 					self::OPTION_ORDER,
 					self::OPTION_SERVICES,
 					self::OPTION_WEIGHT,
+					self::OPTION_NOTE,
 				];
 
 			case self::SHIPPER_DPD:
