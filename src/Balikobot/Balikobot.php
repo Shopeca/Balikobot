@@ -1533,6 +1533,8 @@ class Balikobot
 					$limit = 70;
 				} elseif ($shipper == self::SHIPPER_PPL) {
 					$limit = 350;
+				} elseif ($shipper == self::SHIPPER_CP) {
+					$limit = 50;
 				} elseif ($shipper == self::SHIPPER_GEIS) {
 					$limit = ($name == self::OPTION_NOTE) ? 57 : 62;
 				} elseif ($shipper == self::SHIPPER_ULOZENKA) {
