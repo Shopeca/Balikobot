@@ -452,6 +452,9 @@ class Balikobot
 		'data' => [],
 	];
 
+	/** @var bool */
+	protected $autoTrim = false;
+
 	/**
 	 * @param array $apiBranches
 	 *
@@ -1446,6 +1449,14 @@ class Balikobot
 		return $constants;
 	}
 
+	/**
+	 * @param bool $option
+	 */
+	public function setAutoTrim($option)
+	{
+		$this->autoTrim = $option === true;
+	}
+
 	// protected ---------------------------------------------------------------------------------------------------------
 
 	/**
@@ -1533,9 +1544,13 @@ class Balikobot
 				}
 
 				if (strlen($value) > $limit) {
-					throw new \InvalidArgumentException(
-						"Invalid value of note option has been entered. Maximum length is $limit characters."
-					);
+					if ($this->autoTrim) {
+						$value = substr($value, 0, $limit);
+					} else {
+						throw new \InvalidArgumentException(
+							"Invalid value of note option has been entered. Maximum length is $limit characters."
+						);
+					}
 				}
 				break;
 
