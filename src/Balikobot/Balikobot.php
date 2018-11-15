@@ -832,8 +832,9 @@ class Balikobot
 	 * )
 	 * @param string $eid MAX 40 alphanumeric characters. Will be generated if not supplied
 	 * @param bool $test
+	 * @param bool clean
 	 */
-	public function add($eid = null, $test = false)
+	public function add($eid = null, $test = false, $clean = true)
 	{
 		if (!$this->data['isService'] || !$this->data['isCustomer']) {
 			throw new \UnexpectedValueException('Call service and customer method before.');
@@ -852,7 +853,10 @@ class Balikobot
 		// add only one package
 		$response = $this->call($test ? self::REQUEST_CHECK : self::REQUEST_ADD, $this->data['shipper'], [$this->data['data']]);
 		$response[0]["eid"]=$this->data['data']['eid'];
-		$this->clean();
+
+		if ($clean) {
+			$this->clean();
+		}
 
 		if (!isset($response[0]['package_id']) && ($test === false || !isset($response[0]['status']) || $response[0]['status'] != '200')) {
 			$errorMsg = "";
