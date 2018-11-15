@@ -804,6 +804,25 @@ class Balikobot
 	}
 
 	/**
+	 * Removes cash on delivery from package
+	 *
+	 * @return $this
+	 */
+	public function cleanCashOnDelivery()
+	{
+		$unsetValues = ['cod_price', 'vs', 'cod_currency'];
+		foreach ($unsetValues as $unsetValue) {
+			if (array_key_exists($unsetValue, $this->data['data'])) {
+				unset($this->data['data'][$unsetValue]);
+			}
+		}
+
+		$this->data['isCashOnDelivery'] = false;
+
+		return $this;
+	}
+
+	/**
 	 * @return array(
 	 *     'carrier_id' => track and trace package id,
 	 *     'package_id' => identification used by API request,
