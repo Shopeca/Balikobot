@@ -1457,13 +1457,12 @@ class Balikobot
 		$this->autoTrim = $option === true;
 	}
 
-	// protected ---------------------------------------------------------------------------------------------------------
-
 	/**
 	 * @param string $name
 	 * @param mixed $value
+	 * @param string $shipper
 	 */
-	protected function saveOption($name, $value, $shipper = null)
+	public function saveOption($name, $value, $shipper = null)
 	{
 		if (empty($name)) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
@@ -1574,6 +1573,8 @@ class Balikobot
 
 		$this->data['data'][$name] = $value;
 	}
+
+	// protected ---------------------------------------------------------------------------------------------------------
 
 	/**
 	 * @param string $shipper
