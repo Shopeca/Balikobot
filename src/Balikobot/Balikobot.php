@@ -353,7 +353,8 @@ class Balikobot
 		OPTION_NOTE_DRIVER = 'note_driver', /*< note */
 		OPTION_NOTE_CUSTOMER = 'note_recipient', /*< note for customer */
 		OPTION_AGE = 'require_full_age', /*< taking delivery requires full age; boolean */
-		OPTION_PASSWORD = 'password'; /*< taking delivery requires password */
+		OPTION_PASSWORD = 'password', /*< taking delivery requires password */
+		OPTION_ORDER_NUMBER = 'order_number'; /*< number of package */
 // </editor-fold>
  // <editor-fold desc="Czech Post shipper's service options" defaultstate="collapsed">
 	/**
@@ -1277,6 +1278,7 @@ class Balikobot
 					self::OPTION_SERVICES,
 					self::OPTION_WEIGHT,
 					self::OPTION_NOTE,
+					self::OPTION_ORDER_NUMBER,
 				];
 
 			case self::SHIPPER_DPD:
@@ -1288,6 +1290,7 @@ class Balikobot
 					self::OPTION_INSURANCE,
 					self::OPTION_NOTE,
 					self::OPTION_WEIGHT,
+					self::OPTION_ORDER_NUMBER,
 				];
 
 			case self::SHIPPER_GEIS:
@@ -1308,6 +1311,7 @@ class Balikobot
 					self::OPTION_B2C,
 					self::OPTION_NOTE_DRIVER,
 					self::OPTION_NOTE_CUSTOMER,
+					self::OPTION_ORDER_NUMBER,
 				];
 
 			case self::SHIPPER_GLS:
@@ -1316,6 +1320,7 @@ class Balikobot
 					self::OPTION_ORDER,
 					self::OPTION_BRANCH,
 					self::OPTION_WEIGHT,
+					self::OPTION_ORDER_NUMBER,
 				];
 
 			case self::SHIPPER_INTIME:
@@ -1326,6 +1331,7 @@ class Balikobot
 					self::OPTION_INSURANCE,
 					self::OPTION_NOTE,
 					self::OPTION_WEIGHT,
+					self::OPTION_ORDER_NUMBER,
 				];
 
 			case self::SHIPPER_PBH:
@@ -1348,6 +1354,7 @@ class Balikobot
 					self::OPTION_COMFORT,
 					self::OPTION_RETURN_OLD_HA,
 					self::OPTION_NOTE,
+					self::OPTION_ORDER_NUMBER,
 				];
 
 			case self::SHIPPER_TOPTRANS:
@@ -1359,6 +1366,7 @@ class Balikobot
 					self::OPTION_WEIGHT,
 					self::OPTION_NOTE,
 					self::OPTION_COMFORT,
+					self::OPTION_ORDER_NUMBER,
 				];
 
 			case self::SHIPPER_ULOZENKA:
@@ -1370,6 +1378,7 @@ class Balikobot
 					self::OPTION_NOTE,
 					self::OPTION_AGE,
 					self::OPTION_PASSWORD,
+					self::OPTION_ORDER_NUMBER,
 				];
 
 			case self::SHIPPER_ZASILKOVNA:
@@ -1378,6 +1387,7 @@ class Balikobot
 					self::OPTION_ORDER,
 					self::OPTION_BRANCH,
 					self::OPTION_WEIGHT,
+					self::OPTION_ORDER_NUMBER,
 				];
 		}
 
