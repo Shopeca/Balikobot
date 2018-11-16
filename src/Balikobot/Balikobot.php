@@ -591,10 +591,6 @@ class Balikobot
 					if (!isset($options[self::OPTION_WEIGHT])) {
 						throw new \InvalidArgumentException('The weight option is required for this service.');
 					}
-				} else {
-					if (isset($options[self::OPTION_NOTE])) {
-						throw new \InvalidArgumentException('The note option is not supported for this service.');
-					}
 				}
 				break;
 
