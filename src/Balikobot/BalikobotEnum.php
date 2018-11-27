@@ -416,4 +416,44 @@ class BalikobotEnum
 		EXCEPTION_NOT_SUPPORTED = 401, /*< Not supported */
 		EXCEPTION_SERVER_ERROR = 500; /*< Unexpected response from the server */
 
+	public static function getCountryCodes()
+	{
+		return self::getConstants('COUNTRY');
+	}
+
+	public static function getCurrencies()
+	{
+		return self::getConstants('CURRENCY');
+	}
+
+	public static function getOptionServices()
+	{
+		return self::getConstants('OPTION_SERVICES');
+	}
+
+	public static function getShippers()
+	{
+		return self::getConstants('SHIPPER');
+	}
+
+	public static function getConstants($type)
+	{
+		if (!preg_match('|_$|', $type)) {
+			$type .= '_';
+		}
+		$typeLenght = strlen($type);
+
+		$rc = new \ReflectionClass(__CLASS__);
+		$constants = $rc->getConstants();
+
+		$r = [];
+		foreach ($constants as $key => $item) {
+			if (substr($key, 0, $typeLenght) === $type) {
+				$r[$key] = $item;
+			}
+		}
+
+		return $r;
+	}
+
 }

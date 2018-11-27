@@ -133,7 +133,7 @@ class Balikobot
 		if (empty($shipper)) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
-		if (!in_array($shipper, $this->getShippers())) {
+		if (!in_array($shipper, BalikobotEnum::getShippers())) {
 			throw new \InvalidArgumentException("Unknown $shipper shipper.");
 		}
 
@@ -315,7 +315,7 @@ class Balikobot
 		if (count($failedArguments) > 0) {
 			throw new CustomerInvalidArgumentException('Invalid argument has been entered.', 1, $failedArguments);
 		}
-		if (!in_array($country, $this->getCountryCodes())) {
+		if (!in_array($country, BalikobotEnum::getCountryCodes())) {
 			throw new CustomerInvalidArgumentException('Invalid country code has been entered.', 2, $country);
 		}
 
@@ -368,7 +368,7 @@ class Balikobot
 		if (!is_numeric($variableSymbol)) {
 			throw new \InvalidArgumentException('Invalid variable symbol has been entered.');
 		}
-		if (!in_array($currency, $this->getCurrencies())) {
+		if (!in_array($currency, BalikobotEnum::getCurrencies())) {
 			throw new \InvalidArgumentException('Invalid currency has been entered.');
 		}
 
@@ -461,7 +461,7 @@ class Balikobot
 	 */
 	public function getServices($shipper)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers())) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers())) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -485,7 +485,7 @@ class Balikobot
 	 */
 	public function getManipulationUnits($shipper)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers())) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers())) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -522,7 +522,7 @@ class Balikobot
 	 */
 	public function getBranches($shipper, $service = null, $full = false)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers())) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers())) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -564,7 +564,7 @@ class Balikobot
 	 */
 	public function getCountriesForService($shipper)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers())) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers())) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -600,9 +600,9 @@ class Balikobot
 	 */
 	public function getZipCodes($shipper, $service, $country = BalikobotEnum::COUNTRY_CZECHIA)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers())
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers())
 		    || empty($service) || !isset($this->getServices($shipper)[$service])
-		    || !in_array($country, $this->getCountryCodes())) {
+		    || !in_array($country, BalikobotEnum::getCountryCodes())) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -646,7 +646,7 @@ class Balikobot
 	 */
 	public function dropPackage($shipper, $packageId)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers()) || empty($packageId)) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers()) || empty($packageId)) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -678,7 +678,7 @@ class Balikobot
 	 */
 	public function trackPackage($shipper, $carrierId)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers()) || empty($carrierId)) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers()) || empty($carrierId)) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -706,7 +706,7 @@ class Balikobot
 	 */
 	public function trackPackageLast($shipper, $carrierId)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers()) || empty($carrierId)) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers()) || empty($carrierId)) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -732,7 +732,7 @@ class Balikobot
 	 */
 	public function overview($shipper)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers())) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers())) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -754,7 +754,7 @@ class Balikobot
 	 */
 	public function getLabels($shipper, array $packages)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers()) || empty($packages)) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers()) || empty($packages)) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -776,7 +776,7 @@ class Balikobot
 	 */
 	public function getPackageInfo($shipper, $packageId)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers()) || empty($packageId)) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers()) || empty($packageId)) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -798,7 +798,7 @@ class Balikobot
 	 */
 	public function order($shipper, array $packages = [])
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers())) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers())) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -823,23 +823,6 @@ class Balikobot
 	// helpers ---------------------------------------------------------------------------------------------------------
 
 	/**
-	 * Returns available shippers
-	 */
-	public function getShippers()
-	{
-		$rc = new \ReflectionClass($this);
-		$constants = $rc->getConstants();
-
-		foreach ($constants as $key => $item) {
-			if (substr($key, 0, 8) !== 'SHIPPER_') {
-				unset($constants[$key]);
-			}
-		}
-
-		return $constants;
-	}
-
-	/**
 	 * Returns available options for the given shipper
 	 *
 	 * @param string $shipper
@@ -847,7 +830,7 @@ class Balikobot
 	 */
 	public function getOptions($shipper)
 	{
-		if (empty($shipper) || !in_array($shipper, $this->getShippers())) {
+		if (empty($shipper) || !in_array($shipper, BalikobotEnum::getShippers())) {
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
@@ -977,57 +960,6 @@ class Balikobot
 	}
 
 	/**
-	 * Returns country codes
-	 */
-	public function getCountryCodes()
-	{
-		$rc = new \ReflectionClass($this);
-		$constants = $rc->getConstants();
-
-		foreach ($constants as $key => $item) {
-			if (substr($key, 0, 8) !== 'COUNTRY_') {
-				unset($constants[$key]);
-			}
-		}
-
-		return $constants;
-	}
-
-	/**
-	 * Returns currencies
-	 */
-	public function getCurrencies()
-	{
-		$rc = new \ReflectionClass($this);
-		$constants = $rc->getConstants();
-
-		foreach ($constants as $key => $item) {
-			if (substr($key, 0, 9) !== 'CURRENCY_') {
-				unset($constants[$key]);
-			}
-		}
-
-		return $constants;
-	}
-
-	/**
-	 * Returns available values for option services
-	 */
-	public function getOptionServices()
-	{
-		$rc = new \ReflectionClass($this);
-		$constants = $rc->getConstants();
-
-		foreach ($constants as $key => $item) {
-			if (substr($key, 0, 16) !== 'OPTION_SERVICES_') {
-				unset($constants[$key]);
-			}
-		}
-
-		return $constants;
-	}
-
-	/**
 	 * @param bool $option
 	 */
 	public function setAutoTrim($option)
@@ -1061,7 +993,7 @@ class Balikobot
 					throw new \InvalidArgumentException('Invalid value of services option has been entered.');
 				}
 
-				$cpServices = $this->getOptionServices();
+				$cpServices = BalikobotEnum::getOptionServices();
 
 				foreach ($value as $serviceItem) {
 					if (!in_array($serviceItem, $cpServices)) {
