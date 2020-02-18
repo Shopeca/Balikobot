@@ -885,6 +885,7 @@ class Balikobot
 					BalikobotEnum::OPTION_BRANCH,
 					BalikobotEnum::OPTION_WEIGHT,
 					BalikobotEnum::OPTION_ORDER_NUMBER,
+					BalikobotEnum::OPTION_NOTE,
 				];
 
 			case BalikobotEnum::SHIPPER_INTIME:
