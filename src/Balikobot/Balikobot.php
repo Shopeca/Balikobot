@@ -243,7 +243,7 @@ class Balikobot
 				break;
 
 			case BalikobotEnum::SHIPPER_TOPTRANS:
-				if (empty($options[BalikobotEnum::OPTION_TT_MU_TYPE])) {
+				if (empty($options[BalikobotEnum::OPTION_MU_TYPE_ONE])) {
 					throw new \InvalidArgumentException('The mu type option is required for this service.');
 				}
 				if (empty($options[BalikobotEnum::OPTION_WEIGHT])) {
