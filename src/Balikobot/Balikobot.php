@@ -965,6 +965,12 @@ class Balikobot
 					BalikobotEnum::OPTION_NOTE,
 					BalikobotEnum::OPTION_COMFORT,
 					BalikobotEnum::OPTION_ORDER_NUMBER,
+					BalikobotEnum::OPTION_MU_TYPE_ONE,
+					BalikobotEnum::OPTION_PIECES_ONE,
+					BalikobotEnum::OPTION_MU_TYPE_TWO,
+					BalikobotEnum::OPTION_PIECES_TWO,
+					BalikobotEnum::OPTION_MU_TYPE_THREE,
+					BalikobotEnum::OPTION_PIECES_THREE,
 				];
 
 			case BalikobotEnum::SHIPPER_ULOZENKA:

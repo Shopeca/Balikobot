@@ -329,7 +329,13 @@ class BalikobotEnum
 		OPTION_INSURANCE = 'del_insurance', /*< insurance; boolean */
 		OPTION_NOTE = 'note', /*< note */
 		OPTION_MU_TYPE = 'mu_type', /*< manipulation unit code; call getManipulationUnits */
+		OPTION_MU_TYPE_ONE = 'mu_type_one',
+		OPTION_MU_TYPE_TWO = 'mu_type_two',
+		OPTION_MU_TYPE_THREE = 'mu_type_three',
 		OPTION_PIECES = 'pieces_count', /*< number of items if bigger than one; int */
+		OPTION_PIECES_ONE = 'pieces_count_one',
+		OPTION_PIECES_TWO = 'pieces_count_two',
+		OPTION_PIECES_THREE = 'pieces_count_three',
 		OPTION_TT_MU_TYPE = 'mu_type', /*< manipulation unit code; call getManipulationUnits */
 		OPTION_TT_PIECES = 'pieces_count', /*< number of items if bigger than one; int */
 		OPTION_WEIGHT = 'weight', /*< weight in kg; float */
