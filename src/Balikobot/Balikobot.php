@@ -37,6 +37,9 @@ class Balikobot
 	/** @var bool */
 	protected $autoTrim = false;
 
+	/** @var string */
+	protected $version;
+
 	/**
 	 * @param array $apiBranches
 	 *
@@ -1124,6 +1127,14 @@ class Balikobot
 		$this->data['data'][$name] = $value;
 	}
 
+	/**
+	 * @param string $version
+	 */
+	public function setVersion($version)
+	{
+		$this->version = $version;
+	}
+
 	// protected ---------------------------------------------------------------------------------------------------------
 
 	/**
@@ -1160,8 +1171,10 @@ class Balikobot
 			throw new \InvalidArgumentException('Invalid argument has been entered.');
 		}
 
+		$version = $this->version != null ? $this->version . '/' : '';
+
 		$r = curl_init();
-		curl_setopt($r, CURLOPT_URL, $url ? "$this->apiUrl/$shipper/$request/$url" : "$this->apiUrl/$shipper/$request");
+		curl_setopt($r, CURLOPT_URL, $url ? "$this->apiUrl/{$version}{$shipper}/$request/$url" : "$this->apiUrl/{$version}{$shipper}/$request");
 		curl_setopt($r, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($r, CURLOPT_HEADER, false);
 		if (!empty($data)) {
